@@ -4,19 +4,30 @@
 #include <string>
 using namespace std;
 
-bool is_fence_or_post(int x, int y, vector< pair <int,int> > &fences);
+struct Robot {
+    int x;
+    int y;
+    int id;
+};
 
-bool is_robot(int x, int y, vector< pair <int,int> > &robots);
+struct Element {
+    int x;
+    int y;
+};
 
-bool is_player(int x, int y, pair <int, int> player);
+bool is_fence_or_post(int x, int y, vector<Element> &fences);
 
-bool is_alive(vector< pair <int,int> > &robots, vector< pair <int,int> > &fences, pair <int,int> player);
+bool is_robot(int x, int y, vector<Robot> &robots);
+
+bool is_player(int x, int y, Element player);
+
+bool is_alive(vector<Robot> &robots, vector< Element> &fences, Element player);
 
 
-void input_map(vector< pair <int,int> > &robots, vector< pair <int,int> > &fences, int mapNumber);
+void input_map(vector< Robot> &robots, vector< Element> &fences, int mapNumber);
 
-void draw(vector< pair <int,int> > &fences, vector< pair <int,int> > &robots, pair <int,int> player);
+void draw(vector< Element> &fences, vector< Robot> &robots, Element player);
 
-void move(vector< pair <int,int> > &robots, pair <int,int> &player);
+void move(vector< Robot> &robots, Element &player);
 
 int play_game(int mapNumber);
