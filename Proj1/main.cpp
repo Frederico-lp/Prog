@@ -1,5 +1,6 @@
+#include <iostream>
 #include "game.hpp"
-#include "menu.cpp"
+#include "menu.hpp"
 
 int main(){
     int option;
@@ -9,18 +10,16 @@ int main(){
     case 0:
         break;
     case 1:
-        exit(0);
+        if(show_rules())
+            play_game(select_map());
         break;
     case 2:
-        play_game(1);
-    
+        play_game(select_map());
+        break;
     default:
     cout<<"Option not valid.\n";
         break;
     }
-    if (option == 2)
-        play_game(1);
-        //play_game(map_number)
         
 
    return 0;
