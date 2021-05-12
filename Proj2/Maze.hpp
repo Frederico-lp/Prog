@@ -1,15 +1,10 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <ctime>
-#include <algorithm>
-#include <cstring>
-class Maze
+#include "Post.hpp"
 using namespace std;
+class Maze{
     
 private:
-    int width, height;
+    int width;
+    int height;
     vector <Post> posts;
 
 public:
@@ -18,6 +13,6 @@ public:
     int getHeight();
     void setWidth(int width);
     void setHeight(int height);
-    vector* getPosts();
+    vector<Post> getPosts();
     void addPost(Post post);
 };

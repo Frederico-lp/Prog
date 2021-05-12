@@ -11,8 +11,8 @@ int Robot::getX(){
     return this->x;
 }
 
-int Robot::getX(){
-    return this->x;
+int Robot::getY(){
+    return this->y;
 }
 
 bool Robot::isAlive(){
@@ -36,16 +36,3 @@ void Robot::killRobot(){
     Robot::alive = false;
 }
 
-bool Player::isRobot(int x, int y, vector<Robot> &robots);
-//getx ou so x? como é vetor acho q tenho de usar o getX
-    for(int i = 0; i < robots.size(); i++){
-        if(x == robots.at(i).getX() && y == robots.at(i).getY()){
-            if(robotStatus.at(i).isAlive()){
-                return 1;
-            }
-            else return 2;
-        }
-    }
-    return 0;
-
-}

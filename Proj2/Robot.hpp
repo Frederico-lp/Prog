@@ -5,14 +5,14 @@
 #include <ctime>
 #include <algorithm>
 #include <cstring>
-class Robot
+class Robot{
     
 private:
     int x, y, id;
     bool alive;
 
 public:
-    Robot(int x, int y, id);
+    Robot(int x, int y, int id);
     int getX();
     int getY();
     bool isAlive();
@@ -20,6 +20,6 @@ public:
     void setY(int y);
     void setPosition(int x, int y);
     void killRobot();
-    int isRobot(int x, int y, vector<Robot> &robots);
+    int isRobot(int x, int y, std::vector<Robot> &robots);
 
 };

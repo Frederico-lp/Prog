@@ -5,14 +5,14 @@
 #include <ctime>
 #include <algorithm>
 #include <cstring>
-class Post
 using namespace std;
+class Post{
     
 private:
     int x, y;
 
 public:
-    Robot(int x, int y, id);
+    Post(int x, int y);
     int getX();
     int getY();
     void setX(int x);

@@ -4,10 +4,11 @@ using namespace std;
 Maze::Maze(int width, int height){
     this->width = width;
     this->height = height;
+    vector<Post> posts;
 
 }
 
-vector* Maze::getPosts(){
+vector<Post> Maze::getPosts(){
     return this->posts;
 }
 
@@ -20,11 +21,11 @@ int getHeight(){
 }
 
 void setWidth(int width){
-    this->width = width;
+    Maze::width = width;
 }
 
 void setHeight(int height){
-    this->height = height;
+    Maze::height = height;
 }
 
 void addPost(Post post){

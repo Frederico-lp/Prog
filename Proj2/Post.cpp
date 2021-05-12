@@ -9,7 +9,7 @@ int Post::getX(){
     return this->x;
 }
 
-int Post::getX(){
+int Post::getY(){
     return this->x;
 }
 
@@ -26,14 +26,14 @@ void Post::setPosition(int x, int y){
     Post::y = y;
 }
 
-
-bool Player::isPost(int width, int height, int x, int y, vector<Post> &fences){
-    if(x == 0 || x = width || y == 0 || y == height)
+//mudar isto para game.
+bool Post::isPost(int width, int height, int x, int y, std::vector<Post> &posts){
+    if(x == 0 || x == width || y == 0 || y == height)
         return true;
 
     else {
-        for(int i = 0; i < fences.size(); i++){
-            if(x == fences.at(i).getX() && y == fences.at(i).getY())
+        for(int i = 0; i < posts.size(); i++){
+            if(x == posts.at(i).getX() && y == posts.at(i).getY())
                 return true;
         }
     }
