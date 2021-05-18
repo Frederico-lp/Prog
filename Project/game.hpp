@@ -4,15 +4,8 @@
 #include <string>
 using namespace std;
 
-struct Robot {
-    int x;
-    int y;
-    int id;
-};
+class Game{
 
-struct Element {
-    int x;
-    int y;
 };
 
 

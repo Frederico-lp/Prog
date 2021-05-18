@@ -12,22 +12,22 @@ vector<Post> Maze::getPosts(){
     return this->posts;
 }
 
-int getWidth(){
+int Maze::getWidth(){
     return this->width;
 }
     
-int getHeight(){
+int Maze::getHeight(){
     return this->height;
 }
 
-void setWidth(int width){
+void Maze::setWidth(int width){
     Maze::width = width;
 }
 
-void setHeight(int height){
+void Maze::setHeight(int height){
     Maze::height = height;
 }
 
-void addPost(Post post){
+void Maze::addPost(Post post){
     this->posts.push_back(post);
 }

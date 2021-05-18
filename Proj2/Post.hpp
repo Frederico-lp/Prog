@@ -18,5 +18,5 @@ public:
     void setX(int x);
     void setY(int y);
     void setPosition(int x, int y);
-    bool isPost(int width, int height, int x, int y, vector<Post> &fences);
+    bool is_post(int width, int height, int x, int y, vector<Post> &fences);
 };

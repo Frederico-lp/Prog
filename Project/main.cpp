@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Game.hpp"
+#include "game.hpp"
 #include "menu.hpp"
+#include "Player.hpp"
 
 int main(){
-    Game game;
     int option;
     option = print_menu();
     switch (option)
@@ -12,10 +12,10 @@ int main(){
         break;
     case 1:
         if(show_rules())
-            game.play_game(select_map());
+            play_game(select_map());
         break;
     case 2:
-        game.play_game(select_map());
+        play_game(select_map());
         break;
     default:
     cout<<"Option not valid.\n";

@@ -26,12 +26,5 @@ void Player::setPosition(int x, int y){
     Player::y = y;
 }
 
-bool Player::is_player(int x, int y){
-    if(x == this->x && y == this->y)
-        return true;
-
-    return false;
-
-}
 
 

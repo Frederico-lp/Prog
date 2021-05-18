@@ -27,18 +27,5 @@ void Post::setPosition(int x, int y){
 }
 
 //mudar isto para game.
-bool Post::isPost(int width, int height, int x, int y, std::vector<Post> &posts){
-    if(x == 0 || x == width || y == 0 || y == height)
-        return true;
 
-    else {
-        for(int i = 0; i < posts.size(); i++){
-            if(x == posts.at(i).getX() && y == posts.at(i).getY())
-                return true;
-        }
-    }
-    
-    return false;
-
-}
 

@@ -17,5 +17,4 @@ public:
     void setX(int x);
     void setY(int y);
     void setPosition(int x, int y);
-    bool is_player(int x, int y);
 };

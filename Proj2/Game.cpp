@@ -60,7 +60,7 @@ bool Game::is_alive(Maze &maze, vector< Robot > &robots, Player &player){
         return false;
 
     else {
-        for(int i = 0; i < maze.getPosts()->size(); i++){
+        for(int i = 0; i < maze.getPosts().size(); i++){
             if(player.getX() == maze.getPosts().at(i).getX() &&
                  player.getY() == maze.getPosts().at(i).getY())
                 return false;
@@ -81,6 +81,29 @@ bool Game::is_robot(int x, int y, vector<Robot> &robots){
         }
     }
     return 0;
+
+}
+
+bool Game::is_player(int x, int y, Player &player){
+    if(x == player.getX() && y == player.getY())
+        return true;
+
+    return false;
+
+}
+
+bool Game::is_post(int width, int height, int x, int y, std::vector<Post> posts){
+    if(x == 0 || x == width || y == 0 || y == height)
+        return true;
+
+    else {
+        for(int i = 0; i < posts.size(); i++){
+            if(x == posts.at(i).getX() && y == posts.at(i).getY())
+                return true;
+        }
+    }
+    
+    return false;
 
 }
 
@@ -124,11 +147,10 @@ void Game::input_map(Maze &maze, vector<Robot> &robots, Player &player, int mapN
     for(int height = 0; getline(level, line); height++){
         for(int width = 0; width < line.size(); width++){
             if(line[width] == 'H'){
-                player.setX(width);
-                player.setY(height);
+                player.setPosition(width, height);
             }
             else if(line[width] == 'R'){
-                Robot robot = new Robot(width, height, id)
+                Robot robot(width, height, id);
                 robots.push_back(robot);
                 id++;
             }
@@ -138,8 +160,8 @@ void Game::input_map(Maze &maze, vector<Robot> &robots, Player &player, int mapN
                 if(height != 0 && height != (maze.getHeight() - 1) 
                     && width != 0 && width != (maze.getWidth() - 1) ){
                         //posso fazer isto?
-                        Post post = new post(width, height, id);
-                        maze.addPost( {width, height, id} );
+                        Post post(width, height);
+                        maze.addPost(post);
                     }
             }
         }
@@ -188,7 +210,7 @@ void Game::export_results(int mapNumber, time_t gameTime){
 }
 
 
-void Game::draw(Maze &maze, vector< Robot> &robots, Player player) {
+void Game::draw(Maze &maze, vector< Robot> &robots, Player &player) {
     cout << "\x1B[2J\x1B[H";
 
     // draws the map
@@ -222,45 +244,45 @@ void Game::moveTurn(vector< Robot > &robots, Player &player){
     cout << "Choose a move" << endl;
     cin >> move;
     if(move == 'q' || move == 'Q'){
-        if(is_robot(player->getX() - 1, player.getY - 1, robots) != 2){
-            player->setX(player->getX() - 1);
-            player->setY(player->getY() - 1);
+        if(is_robot(player.getX() - 1, player.getY() - 1, robots) != 2){
+            player.setX(player.getX() - 1);
+            player.setY(player.getY() - 1);
         }
 
     } else if(move == 'w' || move == 'W'){
-        if(is_robot(player->getX(), player->getY() - 1, robots) != 2)
-            player->setY(player->getY() - 1);
+        if(is_robot(player.getX(), player.getY() - 1, robots) != 2)
+            player.setY(player.getY() - 1);
 
     } else if(move == 'e' || move == 'E'){
-        if(is_robot(player.x + 1, player.y - 1, robots) != 2){
-            player->setX(player->getX() + 1);
-            player->setY(player->getY() - 1);
+        if(is_robot(player.getX() + 1, player.getY() - 1, robots) != 2){
+            player.setX(player.getX() + 1);
+            player.setY(player.getY() - 1);
         }
 
     } else if(move == 'a' || move == 'A'){
-        if(is_robot(player.x - 1, player.y, robots) != 2)
-            player->setX(player->getX() - 1);
+        if(is_robot(player.getX() - 1, player.getY(), robots) != 2)
+            player.setX(player.getX() - 1);
 
     } else if(move == 's' || move == 'S'){
 
     } else if(move == 'd' || move == 'D'){
-        if(is_robot(player.x + 1, player.y, robots) != 2)
-            player->setX(player->getX() + 1);
+        if(is_robot(player.getX() + 1, player.getY(), robots) != 2)
+            player.setX(player.getX() + 1);
 
     } else if(move == 'z' || move == 'Z'){
-        if(is_robot(player.x - 1, player.y + 1, robots) != 2){
-            player->setX(player->getX() - 1);
-            player->setY(player->getY() + 1);
+        if(is_robot(player.getX() - 1, player.getY() + 1, robots) != 2){
+            player.setX(player.getX() - 1);
+            player.setY(player.getY() + 1);
         }
 
     } else if(move == 'x' || move == 'X'){
-        if(is_robot(player.x, player.y - 1, robots) != 2)
-            player->setY(player->getY() + 1);
+        if(is_robot(player.getX(), player.getY() - 1, robots) != 2)
+            player.setY(player.getY() + 1);
 
     } else if(move == 'c' || move == 'C'){
-        if(is_robot(player.x + 1, player.y + 1, robots) != 2){
-            player->setX(player->getX() + 1);
-            player->setY(player->getY() + 1);
+        if(is_robot(player.getX() + 1, player.getY() + 1, robots) != 2){
+            player.setX(player.getX() + 1);
+            player.setY(player.getY() + 1);
         }
 
     } else
@@ -270,9 +292,9 @@ void Game::moveTurn(vector< Robot > &robots, Player &player){
 }
 
 int Game::play_game(int mapNumber){
-    Maze *maze = new Maze(0, 0);
-    Player *player = new Player(0, 0);
-    vector< *Robot > robots;
+    Maze maze(0, 0);
+    Player player(0, 0);
+    vector< Robot > robots;
 
     bool playing = true; 
     bool victorious = false;
@@ -288,25 +310,29 @@ int Game::play_game(int mapNumber){
     srand((unsigned int) time(NULL));
 
     time1 = time(NULL);
-    /*
+    
     while(1){
-        moveTurn(robots, robotStatus, player);
-        robot_collision(robots, robotStatus, fences);
-        if(is_alive(mapSize, robots, fences, player)){
-            draw(mapSize, fences, robots, player);
+        moveTurn(robots, player);
+        robot_collision(robots, maze);
+        if(is_alive(maze, robots, player)){
+            draw(maze, robots, player);
+            /*
             if(all_of(robotStatus.begin(), robotStatus.end(), [](bool v) { return !v; })){
                 allRobotsDeadCheck=true;
             }
+            */
 
             if (allRobotsDeadCheck ){
                 victorious = true;
                 break;
             }
         }
+        /*
         else
             break;
+            */
     }
-    */
+    
 
     time2 = time(NULL);
     elapsedTime = time2 - time1;

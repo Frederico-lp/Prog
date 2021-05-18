@@ -20,13 +20,17 @@ private:
 
     bool is_robot(int x, int y, vector<Robot> &robots);
 
+    bool is_player(int x, int y, Player &player);
+
+    bool is_post(int width, int height, int x, int y, std::vector<Post> posts);
+
     void input_map(Maze &maze, vector<Robot> &robots, Player &player, int mapNumber);
 
     void export_results(int mapNumber, time_t gameTime);
 
-    void draw(Maze &maze, vector< Robot> &robots, Player player);
+    void draw(Maze &maze, vector< Robot> &robots, Player &player);
 
-    void moveTurn(vector< Robot> &robots, vector<bool> &robotStatus, Player &player);
+    void moveTurn(vector< Robot> &robots, Player &player);
 
 
 public:
