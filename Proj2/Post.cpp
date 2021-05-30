@@ -1,31 +1,30 @@
-#include "Post.hpp"
+//T08G06
+#include "Post.h"
 
 Post::Post(int x, int y){
     this->x = x;
     this->y = y;
 }
 
-int Post::getX(){
+int Post::getX() const{
     return this->x;
 }
 
-int Post::getY(){
-    return this->x;
+int Post::getY() const{
+    return this->y;
 }
 
-void Post::setX(int x){
-    Post::x = x;
+void Post::setX(int newX){
+    Post::x = newX;
 }
 
-void Post::setY(int y){
-    Post::y = y;
+void Post::setY(int newY){
+    Post::y = newY;
 }
 
-void Post::setPosition(int x, int y){
-    Post::x = x;
-    Post::y = y;
+void Post::setPosition(int newX, int newY){
+    Post::x = newX;
+    Post::y = newY;
 }
 
 //mudar isto para game.
-
-

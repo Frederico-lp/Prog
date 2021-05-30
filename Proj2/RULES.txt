@@ -1,0 +1,26 @@
+Rules:
+
+The player is placed in a maze made up of high-voltage fences and posts which can be electrified too.
+There are also some interceptor robots that will try to destroy the player.
+
+If the player touches the maze or any of these robots, that is the end of the game (and the player!).
+Moves onto dead robots or non electrified posts are not valid and, therefore, not possible.
+
+For every player move, each robot will move one cell closer to the new player's location.
+The robots have no vision sensors but they have an accurate odour sensor that allows them to follow the player!
+This means that the robot will only ever take the shortest path to the player, regardless of obstacles.
+
+The robots are also destroyed when they touch the fences/posts or when they collide with each other.
+
+The way to win is to exit the maze.
+
+Identifiers:
+
+Each entity is represented by a symbol on the game map.
+Players are "H" when they are alive, "h" when dead.
+Robots are "R" when alive, "r" when dead.
+Fences and electrified posts are "*", while non electrified posts are "+".
+
+Controls:
+
+Use S to stay in the same place, W and X to move vertically, A and D to move horizontally and Q, E, Z and C to move diagonally.

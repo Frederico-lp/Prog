@@ -1,4 +1,5 @@
-#include "Robot.hpp"
+//T08G06
+#include "Robot.h"
 
 Robot::Robot(int x, int y, int id){
     this->x = x;
@@ -7,32 +8,31 @@ Robot::Robot(int x, int y, int id){
     this->alive = true;
 }
 
-int Robot::getX(){
+int Robot::getX() const{
     return this->x;
 }
 
-int Robot::getY(){
+int Robot::getY() const{
     return this->y;
 }
 
-bool Robot::isAlive(){
+bool Robot::isAlive() const{
     return this->alive;
 }
 
-void Robot::setX(int x){
-    Robot::x = x;
+void Robot::setX(int newX){
+    Robot::x = newX;
 }
 
-void Robot::setY(int y){
-    Robot::y = y;
+void Robot::setY(int newY){
+    Robot::y = newY;
 }
 
-void Robot::setPosition(int x, int y){
-    Robot::x = x;
-    Robot::y = y;
+void Robot::setPosition(int newX, int newY){
+    Robot::x = newX;
+    Robot::y = newY;
 }
 
 void Robot::killRobot(){
     Robot::alive = false;
 }
-
